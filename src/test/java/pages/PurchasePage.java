@@ -46,7 +46,7 @@ public class PurchasePage extends BasePage{
     @FindBy(xpath = "//div[@id='nav-tools']/a[5]")
     public WebElement cart;
 
-    @FindBy(xpath = "//*[@id='search']/div[1]/div[1]/div/span[1]/div[1]/div[2]/div/div/div/div/div/div[2]/div/div/div[1]/h2/a/span")
+    @FindBy(xpath = "//*[@id='corePrice_desktop']/div/table/tbody/tr[2]/td[2]/span[1]/span[2]")
     public WebElement itemInfo;
 
     @FindBy(xpath = "//*[@id='attach-close_sideSheet-link']")
@@ -55,13 +55,21 @@ public class PurchasePage extends BasePage{
     @FindBy(xpath = "//span[@class='a-size-small sc-action-delete']")
     public WebElement deleteItemFromCart;
 
+    @FindBy(xpath = "//*[@id='sc-subtotal-amount-buybox']/span")
+    public WebElement verifyItemPrice;
+
     public boolean VerifyDashboard() {
         return pageTitle.isDisplayed();
     }
-    public static String itemInfoText;
 
-    public String verifyItem(){
-        return Driver.get().findElement(By.xpath("//span/a/span/span/span[2]")).getText();
+    public  String verifyItemInfo(){
+        return verifyItemPrice.getText();
+    }
+    public String getPrice(){
+        String price ;
+        price= itemInfo.getText();
+        return price;
+
     }
 
 

@@ -37,4 +37,9 @@ Option 2
 
 Finally, select the Testrun Junit option and then all the tests will be running correctly.
 
+**NOTE**
+
+Search items keep changing because of this reason locater should be update
+
+According to product
 

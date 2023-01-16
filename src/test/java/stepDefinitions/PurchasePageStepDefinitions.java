@@ -47,9 +47,10 @@ public class PurchasePageStepDefinitions {
     @Given("User click at search button")
     public void user_click_at_search_button() {
         purchasePage.searchButton.click();
+        BrowserUtils.waitFor(3);
     }
 
-    @Given("User verify {string} on search page")
+    @Then("User verify {string} on search page")
     public void user_verify_on_search_page(String item) {
         String actualMessage = purchasePage.verifySearchPage.getText();
         Assert.assertEquals("Verify Message", item, actualMessage);
@@ -58,8 +59,6 @@ public class PurchasePageStepDefinitions {
 
     @When("User add it on the cart")
     public void user_add_it_on_the_cart() {
-
-        purchasePage.itemInfoText = purchasePage.itemInfo.getText();
         purchasePage.productLink.click();
         BrowserUtils.waitFor(2);
         purchasePage.addToCart.click();
@@ -67,8 +66,8 @@ public class PurchasePageStepDefinitions {
 
     @Then("User validate the content of the cart to ensure the correct article has been added")
     public void user_validate_the_content_of_the_cart_to_ensure_the_correct_article_has_been_added() {
-        BrowserUtils.waitFor(10);
-        Assert.assertEquals(purchasePage.itemInfoText, purchasePage.verifyItem());
+        BrowserUtils.waitFor(3);
+        Assert.assertEquals(purchasePage.getPrice(), purchasePage.verifyItemInfo());
     }
 
     @And("User go to the cart")
